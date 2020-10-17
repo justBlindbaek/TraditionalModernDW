@@ -1,0 +1,71 @@
+{
+    "name": "PL_UTIL_ScaleDB",
+    "properties": {
+        "activities": [
+            {
+                "name": "Scale Azure SQLDB",
+                "type": "WebActivity",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "url": {
+                        "value": "https://management.azure.com/subscriptions/@{pipeline().parameters.SubscriptionID}/resourceGroups/@{pipeline().parameters.ResourceGroupName}/providers/Microsoft.Sql/servers/@{pipeline().parameters.AzureSQLServerName}/databases/@{pipeline().parameters.AzureSQLDatabaseName}?api-version=2017-10-01-preview",
+                        "type": "Expression"
+                    },
+                    "method": "PUT",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "value": "@json(concat('{\"sku\":{\"name\":\"', pipeline().parameters.ComputeSize, '\",\"tier\":\"', pipeline().parameters.ServiceTier, '\"}, \"location\": \"', pipeline().parameters.AzureRegionName, ' \"}' ) )",
+                        "type": "Expression"
+                    },
+                    "authentication": {
+                        "type": "MSI",
+                        "resource": "https://management.azure.com/"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "ServiceTier": {
+                "type": "String",
+                "defaultValue": "Standard"
+            },
+            "ComputeSize": {
+                "type": "String",
+                "defaultValue": "S0"
+            },
+            "AzureSQLServerName": {
+                "type": "String",
+                "defaultValue": "sqls-traditionaldw"
+            },
+            "AzureSQLDatabaseName": {
+                "type": "String",
+                "defaultValue": "sqldb-traditionaldw"
+            },
+            "SubscriptionID": {
+                "type": "String",
+                "defaultValue": "052f85f4-200f-46c8-a5e9-8881912ac8c1"
+            },
+            "ResourceGroupName": {
+                "type": "String",
+                "defaultValue": "RG-ModernTraditionalDW"
+            },
+            "AzureRegionName": {
+                "type": "String",
+                "defaultValue": "West Europe"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2020-10-16T10:01:14Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
