@@ -1,3 +1,5 @@
 # ignore bin
 **/bin
-**/Debug
+*.cache
+*.dbmdl
+*.fjm
