@@ -1,0 +1,29 @@
+﻿
+
+
+
+CREATE PROCEDURE [log].[TaskExecutionStart] @ID_PipelineExecution BIGINT, @TaskName VARCHAR(255)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+BEGIN TRY
+
+	BEGIN
+		BEGIN TRANSACTION
+			INSERT [log].[TaskExecution] ([ID_PipelineExecution] , [TaskName]) VALUES (@ID_PipelineExecution, @TaskName)
+		COMMIT TRANSACTION
+	END
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		ROLLBACK TRANSACTION;
+	THROW;
+END CATCH
+
+RETURN SCOPE_IDENTITY()
+
+END 
+;

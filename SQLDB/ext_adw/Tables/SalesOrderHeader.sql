@@ -1,0 +1,25 @@
+﻿CREATE TABLE [ext_adw].[SalesOrderHeader] (
+    [SalesOrderID]           INT              NULL,
+    [RevisionNumber]         TINYINT          NULL,
+    [OrderDate]              DATETIME         NULL,
+    [DueDate]                DATETIME         NULL,
+    [ShipDate]               DATETIME         NULL,
+    [Status]                 TINYINT          NULL,
+    [OnlineOrderFlag]        BIT              NULL,
+    [SalesOrderNumber]       NVARCHAR (25)    NULL,
+    [PurchaseOrderNumber]    NVARCHAR (25)    NULL,
+    [AccountNumber]          NVARCHAR (15)    NULL,
+    [CustomerID]             INT              NULL,
+    [ShipToAddressID]        INT              NULL,
+    [BillToAddressID]        INT              NULL,
+    [ShipMethod]             NVARCHAR (50)    NULL,
+    [CreditCardApprovalCode] VARCHAR (15)     NULL,
+    [SubTotal]               MONEY            NULL,
+    [TaxAmt]                 MONEY            NULL,
+    [Freight]                MONEY            NULL,
+    [TotalDue]               MONEY            NULL,
+    [Comment]                NVARCHAR (MAX)   NULL,
+    [rowguid]                UNIQUEIDENTIFIER NULL,
+    [ModifiedDate]           DATETIME         NULL
+);
+
