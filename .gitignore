@@ -1,5 +1,5 @@
 # ignore bin
 **/bin
-*.cache
+*.*cache
 *.dbmdl
 *.jfm
