@@ -1,5 +1,6 @@
-# ignore bin
+# ignore files
 **/bin
 *.*cache
 *.dbmdl
 *.jfm
+*.log
