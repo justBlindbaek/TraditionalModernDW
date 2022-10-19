@@ -16,19 +16,23 @@ The black arrows is where the "magic" happens. Here we move and transform data f
 The blue arrows represent moving data in and out of the SQL Database and is handled with Pipelines. The grey arrows are views with minimal logic. Mostly handling naming, selecting columns and filtering rows.
 
 ## Integration Pipelines (Data Factory)
-The pipelines serves two purposes: Ingesting data and orchestrating the ETL process. In my opinion, this is the best tool to do these jobs. Not only in this solution, but in general. You will find these five templates:
+The pipelines serves two purposes: Ingesting data and orchestrating the ETL process. In my opinion, this is the best tool to do these jobs. Not only in this solution, but in general. You will find these four templates:
 
- - Generic pipeline to ingest data from a SQL based source system
- - Pipeline to transform data with the use of the SQL database
+ - Dynamic pipeline to ingest data from a SQL based source system
+ - Dynamic pipeline to transform dimensions and facts with the use of the SQL database
  - Utility pipeline to scale Azure SQL database
  - Utility pipeline to refresh a Power BI data model
- - Master pipeline to orchestrate a full ETL process
+
+
+ ### Master pipeline to orchestrate a full ETL process
+Creating the master pipeline is easy to build, as it's just a matter of calling the other pipeline in the correct order and with the right parameters.
 
 ![Master Pipeline](https://justb.dk/wp-content/uploads/2022/07/MasterPipeline.png)
 
 
 ### Linked Services
-You will need to create a Linked Service to your SQL database to be able to import the "transform pipeline". If you also want to use the ingest pipeline, then you also need one or more Linked Services to your source systems. The transform samples is using the AdventureWorksLT database that you can create as a sample database, when creating a new SQL database in Azure.
+You will need to create a Linked Service to your Azure SQL database to be able to import the "transform pipeline". If you also want to use the ingest pipeline, then you also need one or more Linked Services to your SQL based source system. The transformation is using the AdventureWorksLT database that you can create as a sample database, when creating a new SQL database in Azure.
+
 
 ## Tabular Editor Scripts (coming soon)
 A series of scripts to quickly build a data model with the free version of Tabular Editor, that you can then deploy directly to Power BI with the use of the XMLA endpoint.
@@ -41,7 +45,6 @@ The solution also consist of some additional components
  - Data Lake Storage
  - Azure Monitor (Log Analytics)
  - Key Vault
-
 
 
 ## Presentation of the solution
