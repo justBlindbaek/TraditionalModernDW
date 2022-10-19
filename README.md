@@ -25,7 +25,7 @@ The pipelines serves two purposes: Ingesting data and orchestrating the ETL proc
 
 
  ### Master pipeline to orchestrate a full ETL process
-Creating the master pipeline is easy to build, as it's just a matter of calling the other pipeline in the correct order and with the right parameters.
+It's easy to build the master pipeline, as it's just a matter of calling the other pipeline in the correct order and with the right parameters. Here is an example:
 
 ![Master Pipeline](https://justb.dk/wp-content/uploads/2022/07/MasterPipeline.png)
 
