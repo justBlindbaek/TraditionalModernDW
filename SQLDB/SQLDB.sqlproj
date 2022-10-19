@@ -121,8 +121,8 @@
     <Folder Include="Properties" />
     <Folder Include="log\" />
     <Folder Include="log\Tables\" />
-    <Folder Include="ext_adw\" />
-    <Folder Include="ext_adw\Tables\" />
+    <Folder Include="raw" />
+    <Folder Include="raw\Tables" />
     <Folder Include="bas\" />
     <Folder Include="bas\Tables\" />
     <Folder Include="sta\" />
@@ -131,13 +131,12 @@
     <Folder Include="dmv_dataset\Views" />
     <Folder Include="dmv_dataflow\" />
     <Folder Include="dmv_dataflow\Views\" />
-    <Folder Include="ext\" />
-    <Folder Include="ext\Views\" />
     <Folder Include="sta\Views\" />
     <Folder Include="Security\" />
     <Folder Include="log\Stored Procedures\" />
     <Folder Include="bas\Stored Procedures\" />
     <Folder Include="sta\Stored Procedures\" />
+    <Folder Include="raw\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="log\Tables\PipelineExecution.sql">
@@ -148,43 +147,43 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\Customer.sql">
+    <Build Include="raw\Tables\SalesLT_Customer.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\ProductModel.sql">
+    <Build Include="raw\Tables\SalesLT_ProductModel.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\ProductDescription.sql">
+    <Build Include="raw\Tables\SalesLT_ProductDescription.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\Product.sql">
+    <Build Include="raw\Tables\SalesLT_Product.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\ProductModelProductDescription.sql">
+    <Build Include="raw\Tables\SalesLT_ProductModelProductDescription.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\ProductCategory.sql">
+    <Build Include="raw\Tables\SalesLT_ProductCategory.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\Address.sql">
+    <Build Include="raw\Tables\SalesLT_Address.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\CustomerAddress.sql">
+    <Build Include="raw\Tables\SalesLT_CustomerAddress.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\SalesOrderDetail.sql">
+    <Build Include="raw\Tables\SalesLT_SalesOrderDetail.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="ext_adw\Tables\SalesOrderHeader.sql">
+    <Build Include="raw\Tables\SalesLT_SalesOrderHeader.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
@@ -225,10 +224,6 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="dmv_dataflow\Views\Sales.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="ext\Views\Sales.sql">
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
@@ -275,9 +270,16 @@
     <Build Include="Security\bas.sql" />
     <Build Include="Security\dmv_dataset.sql" />
     <Build Include="Security\dmv_dataflow.sql" />
-    <Build Include="Security\ext.sql" />
-    <Build Include="Security\ext_adw.sql" />
+    <Build Include="Security\raw.sql" />
     <Build Include="Security\log.sql" />
     <Build Include="Security\sta.sql" />
+    <Build Include="raw\Views\Sales.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>

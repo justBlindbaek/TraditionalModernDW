@@ -1,4 +1,4 @@
-﻿CREATE TABLE [ext_adw].[Product] (
+﻿CREATE TABLE [raw].[SalesLT_Product] (
     [ProductID]              INT              NULL,
     [Name]                   NVARCHAR (50)    NULL,
     [ProductNumber]          NVARCHAR (25)    NULL,
@@ -15,6 +15,7 @@
     [ThumbNailPhoto]         VARBINARY (MAX)  NULL,
     [ThumbnailPhotoFileName] NVARCHAR (50)    NULL,
     [rowguid]                UNIQUEIDENTIFIER NULL,
-    [ModifiedDate]           DATETIME         NULL
+    [ModifiedDate]           DATETIME         NULL,
+    [ADF_PipelineRunId]      NVARCHAR (100)   NULL
 );
 

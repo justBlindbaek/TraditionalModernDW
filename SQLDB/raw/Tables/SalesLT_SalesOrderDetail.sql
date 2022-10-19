@@ -1,4 +1,4 @@
-﻿CREATE TABLE [ext_adw].[SalesOrderDetail] (
+﻿CREATE TABLE [raw].[SalesLT_SalesOrderDetail] (
     [SalesOrderID]       INT              NULL,
     [SalesOrderDetailID] INT              NULL,
     [OrderQty]           SMALLINT         NULL,
@@ -7,6 +7,7 @@
     [UnitPriceDiscount]  MONEY            NULL,
     [LineTotal]          DECIMAL (38, 6)  NULL,
     [rowguid]            UNIQUEIDENTIFIER NULL,
-    [ModifiedDate]       DATETIME         NULL
+    [ModifiedDate]       DATETIME         NULL,
+    [ADF_PipelineRunId]  NVARCHAR (100)   NULL
 );
 

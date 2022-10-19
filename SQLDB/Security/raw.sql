@@ -1,3 +1,3 @@
-﻿CREATE SCHEMA [ext]
+﻿CREATE SCHEMA [raw]
     AUTHORIZATION [dbo];
 

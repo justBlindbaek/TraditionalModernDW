@@ -1,8 +1,4 @@
-﻿
-
-
-
-CREATE PROC [sta].[UpdateTable] @ID_PipelineExecution INT, @TableName VARCHAR(255)
+﻿CREATE PROC [sta].[UpdateTable] @ID_PipelineExecution INT, @TableName VARCHAR(255)
 AS
 BEGIN
 
@@ -11,7 +7,7 @@ DECLARE @Taskname VARCHAR(255)
 SET @TaskName = 'Update sta.' + @TableName
 
 DECLARE @SQL NVARCHAR(MAX) = 
-	CONCAT('TRUNCATE TABLE [sta].[', @TableName, ']; INSERT INTO [sta].[', @TableName, '] SELECT * FROM [ext].[', @TableName, '];');
+	CONCAT('TRUNCATE TABLE [sta].[', @TableName, ']; INSERT INTO [sta].[', @TableName, '] SELECT * FROM [raw].[', @TableName, '];');
 
 EXECUTE @ID_TaskExecution = [log].[TaskExecutionStart] @ID_PipelineExecution = @ID_PipelineExecution, @TaskName = @TaskName
 

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [ext_adw].[SalesOrderHeader] (
+﻿CREATE TABLE [raw].[SalesLT_SalesOrderHeader] (
     [SalesOrderID]           INT              NULL,
     [RevisionNumber]         TINYINT          NULL,
     [OrderDate]              DATETIME         NULL,
@@ -20,6 +20,7 @@
     [TotalDue]               MONEY            NULL,
     [Comment]                NVARCHAR (MAX)   NULL,
     [rowguid]                UNIQUEIDENTIFIER NULL,
-    [ModifiedDate]           DATETIME         NULL
+    [ModifiedDate]           DATETIME         NULL,
+    [ADF_PipelineRunId]      NVARCHAR (100)   NULL
 );
 

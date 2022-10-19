@@ -12,6 +12,6 @@ SELECT p.[ProductID]
       ,COALESCE(p.[Weight], 0) AS [Weight]
       ,pc.[Name] AS [ProductCategoryName]
       ,pm.[Name] AS [ProductModel]
-FROM [ext_adw].[Product] p 
-LEFT OUTER JOIN [ext_adw].[ProductCategory] pc ON pc.ProductCategoryID = p.ProductCategoryID
-LEFT OUTER JOIN [ext_adw].[ProductModel] pm ON pm.ProductModelID = p.ProductModelID
+FROM [raw].[SalesLT_Product] p 
+LEFT OUTER JOIN [raw].[SalesLT_ProductCategory] pc ON pc.ProductCategoryID = p.ProductCategoryID
+LEFT OUTER JOIN [raw].[SalesLT_ProductModel] pm ON pm.ProductModelID = p.ProductModelID
