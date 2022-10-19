@@ -39,6 +39,7 @@ The pipelines serves two main purposes: Ingesting data and orchestrating the ETL
  - Utility pipeline to [scale Azure SQL database](https://learn.microsoft.com/en-us/azure/azure-sql/database/scale-resources)
  - Utility pipeline to refresh a Power BI data model
 
+You can either deploy the templates to Azure Data Factory or Azure Synapse Analytics. The functionality and cost of runing the pipelines is the same.
 
  ### Master pipeline to orchestrate a full ETL process
 It's easy to build the master pipeline, as it's just a matter of calling the other pipeline in the correct order and with the right parameters. Here is an example:
