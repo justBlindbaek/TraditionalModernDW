@@ -23,7 +23,17 @@ BEGIN TRY
 			
 			INSERT [log].[PipelineExecution] ([ID_PipelineExecution] , PipelineRunID, [PipelineName], [ServiceTier], [ComputeSize]) 
 			VALUES (@ID_PipelineExecution, @PipelineRunID, @PipelineName, @ServiceTier, @ComputeSize)
-			SELECT @ID_PipelineExecution AS ID_PipelineExecution
+
+			SELECT @ID_PipelineExecution AS ID_PipelineExecution,
+				CASE 
+				WHEN TABLE_SCHEMA = 'raw' THEN 'Stage' 
+				WHEN TABLE_SCHEMA = 'sta' AND LEFT(TABLE_NAME, 3) = 'Dim' THEN 'Dimension' 
+				WHEN TABLE_SCHEMA = 'sta' AND LEFT(TABLE_NAME, 4) = 'Fact' THEN 'Fact' 
+				END AS StageName
+				, TABLE_NAME AS TableName
+			FROM INFORMATION_SCHEMA.VIEWS
+			WHERE TABLE_SCHEMA IN ('raw', 'sta')
+
 		COMMIT TRANSACTION
 	END
 
@@ -33,7 +43,6 @@ BEGIN CATCH
 		ROLLBACK TRANSACTION;
 	THROW;
 END CATCH
-
 
 END 
 ;
