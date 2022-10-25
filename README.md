@@ -4,14 +4,14 @@ Big data, Databricks and now also Synapse Analytics. Microsoft really focuses on
 ## The architecture
 A very simple "ETL framework" based on Integration Pipelines (Data Factory), Data Lake Storage, SQL Database and Power BI. The architecture consist of multiple different layers, where I have let me inspire and is using some of the terms from the "modern" solutions. There really isn't anything new in this way of creating an layered architecture - it's mostly a matter of naming and then using the Azure services in the best possible way.
 
-![Architecture](https://justb.dk/wp-content/uploads/2022/07/TraditionalModernDWH.png)
+![Architecture](https://justb.dk/wp-content/uploads/2022/10/TraditionalModernDW.png)
 
 ## SQL Database Project
 All trough the initial archtecture shows two SQL Databases, we combine the Store and Transform in the same database. It's adviced to create a [DTU based Azure SQL database](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-dtu?view=azuresql) on the Standard Tier to make the solution most cost effective.
 
 In the database project you find schemas, tables, views and stored procedures. Objects that is all used to transform the data from the raw layer all the way to dimensions and facts in the baseline layer. The solution only handles full load. It's prepared to also handle incremental load, but not yet implemented.
 
-![Transform with SQL DB](https://justb.dk/wp-content/uploads/2022/07/SQLframework.png)
+![Transform with SQL DB](https://justb.dk/wp-content/uploads/2022/10/ModernDW-ETL.png)
 
 The black arrows is where the "magic" happens. Here we move and transform data from one layer to the next. The transformation is defined in views and a couple of generic stored procedures is then taking the output of the views and persist the data in tables in the next layer. The blue arrows represent moving data in and out of the SQL Database and is handled with Integration Pipelines.
 
