@@ -2,12 +2,12 @@
 Big data, Databricks and now also Synapse Analytics. Microsoft really focuses on how to put together BI and Data Warehouse solutions that can handle huge volumes of data. But what about the "ordinary" solutions in the SME market? How do we put together a simple, scalable, sensible and affordable Azure solution for them? Where we can also reuse the competencies we have already built from making the same solutions on SQL Server.
 
 ## The architecture
-A very simple "ETL framework" based on Integration Pipelines (Data Factory), Data Lake Storage, SQL Database and Power BI. The architecture consist of multiple different layers, where I have let me inspire and is using some of the terms from the "modern" solutions. There really isn't anything new in this way of creating an layered architecture - it's mostly a matter of naming and then using the Azure services in the best possible way.
+A very simple "ETL framework" based on Integration Pipelines (Data Factory), Data Lake Storage, SQL Database and Power BI. The architecture consist of multiple different layers, where I draw on and use some of the terms from the "modern" solutions. There really isn't anything new in this way of creating an layered architecture - it's mostly a matter of naming and then using the Azure services in the best possible way.
 
 ![Architecture](https://justb.dk/wp-content/uploads/2022/10/TraditionalModernDW.png)
 
 ## SQL Database Project
-All trough the initial archtecture shows two SQL Databases, we combine the Store and Transform in the same database. It's adviced to create a [DTU based Azure SQL database](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-dtu?view=azuresql) on the Standard Tier to make the solution most cost effective.
+Although the initial architecture shows two SQL Databases, we combine the Store and Transform in the same database. It's adviced to create a [DTU based Azure SQL database](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-dtu?view=azuresql) on the Standard Tier to make the solution most cost effective.
 
 In the database project you find schemas, tables, views and stored procedures. Objects that is all used to transform the data from the raw layer all the way to dimensions and facts in the baseline layer. The solution only handles full load. It's prepared to also handle incremental load, but not yet implemented.
 
